@@ -32,7 +32,7 @@ public class InvitationService implements InvitationServiceInterface {
 
         Invitation invitationEntity = new Invitation().setEmail(invitationRequestDto.getEmail())
                 .setExpirationTime(new Date(getExpirationTime().getTimeInMillis()))
-                .setGeneratedCode("1");
+                .setGeneratedCode("");
 
         invitationRepository.save(invitationEntity);
 
