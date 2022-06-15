@@ -6,10 +6,18 @@ async function getInvitationButtonClick() {
         return;
 
     let infoLabel = document.getElementById('informationText');
-    let userEmail = document.getElementById('emailInput').value;
-    let url = "http://localhost:8080/api/invite/rl?e=" + userEmail;
+    let userJson = {
+        email: document.getElementById('emailInput').value
+    };
+    let url = "http://localhost:8080/api/invite/rl";
 
-    let response = await fetch(url);
+    let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(userJson)
+    });
     let jsonResponse = await response.json();
 
     if (response.ok) {

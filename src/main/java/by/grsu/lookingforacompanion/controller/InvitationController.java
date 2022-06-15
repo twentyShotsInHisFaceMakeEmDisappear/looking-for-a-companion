@@ -1,19 +1,23 @@
 package by.grsu.lookingforacompanion.controller;
 
+import by.grsu.lookingforacompanion.dto.InformationResponseDto;
+import by.grsu.lookingforacompanion.dto.InvitationRequestDto;
+import by.grsu.lookingforacompanion.service.InvitationServiceInterface;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@NoArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping("/api/invite")
 public class InvitationController {
 
-//    @GetMapping("/rl")
-//    public Email getInvitationLink(@RequestParam("e") String email) {
-//
-//
-//        throw new RuntimeException();
-//    }
+    private final InvitationServiceInterface invitationService;
+
+    @PostMapping("/rl")
+    public InformationResponseDto getInvitationLink(@RequestBody InvitationRequestDto invitationRequest) {
+
+        return invitationService.requestAnInvitation(invitationRequest);
+    }
 
 }

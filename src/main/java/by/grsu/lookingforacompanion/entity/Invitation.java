@@ -29,4 +29,7 @@ public class Invitation {
     @Column(name = "expiration_time")
     private Date expirationTime;
 
+    @Column(name = "isActive")
+    private Boolean isActive;
+
 }

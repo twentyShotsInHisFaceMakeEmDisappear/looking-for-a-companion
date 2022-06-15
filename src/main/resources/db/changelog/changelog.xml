@@ -94,4 +94,8 @@
         <sqlFile encoding="UTF-8" path="queries/022.users_nodes-data-insert.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="23" author="Maksim Samsonovich">
+        <sqlFile encoding="UTF-8" path="queries/023.alter-invitations-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>

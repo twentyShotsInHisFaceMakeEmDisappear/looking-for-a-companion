@@ -7,4 +7,6 @@ public interface InvitationServiceInterface {
 
     InformationResponseDto requestAnInvitation(InvitationRequestDto invitationRequestDto);
 
+    InformationResponseDto deactivateAnInvitation(InvitationRequestDto invitationRequestDto);
+
 }
