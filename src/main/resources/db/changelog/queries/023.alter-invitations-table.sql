@@ -1,2 +1,2 @@
 alter table invitations
-add isActive bool default true;
+add is_active bool default true;

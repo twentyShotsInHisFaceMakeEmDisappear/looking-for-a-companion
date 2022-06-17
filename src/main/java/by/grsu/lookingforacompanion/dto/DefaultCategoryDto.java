@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class TruncatedCategoryDto {
+public class DefaultCategoryDto {
 
     private Long id;
 
@@ -22,5 +22,6 @@ public class TruncatedCategoryDto {
     private String description;
 
     private String shortDescription;
+
 
 }

@@ -11,16 +11,12 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class TruncatedCategoryDto {
+public class SubCategoryAttributesDto {
 
-    private Long id;
+    private String titleMention;
 
-    private String title;
+    private String descriptionMention;
 
-    private String imageUrl;
-
-    private String description;
-
-    private String shortDescription;
+    private String shortDescriptionMention;
 
 }

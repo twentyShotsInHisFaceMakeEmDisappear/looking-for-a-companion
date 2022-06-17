@@ -1,6 +1,7 @@
 package by.grsu.lookingforacompanion.repository;
 
 import by.grsu.lookingforacompanion.entity.SubCategory;
+import liquibase.pro.packaged.Q;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -24,5 +25,20 @@ public interface SubCategoryRepository extends JpaRepository<SubCategory, Long> 
     List<SubCategory> getSubCategoriesByNodesCount(Integer limit);
 
     List<SubCategory> getSubCategoriesByCategoryOwnerId(Long categoryOwnerId);
+
+    List<SubCategory> getSubCategoriesByTitleContainingIgnoreCase(String title);
+
+    List<SubCategory> getSubCategoriesByDescriptionContainingIgnoreCase(String description);
+
+    List<SubCategory> getSubCategoriesByShortDescriptionContainingIgnoreCase(String shortDescription);
+
+    @Query(value = "select sc.id, sc.description, sc.image_url, sc.categories_id, "  +
+            "sc.short_description, sc.title from sub_categories sc " +
+            "left outer join nodes n on sc.id = n.sub_categories_id " +
+            "where sc.categories_id = :categoryOwnerId " +
+            "group by sc.id order by count(n)",
+        nativeQuery = true)
+    List<SubCategory> getTopMostPublishedSubCategoriesByCategoryOwnerId(Long categoryOwnerId);
+
 
 }

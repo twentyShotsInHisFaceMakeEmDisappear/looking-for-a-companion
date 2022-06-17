@@ -182,6 +182,13 @@ h5 {
     border-style: none;
 }
 
+.icon {
+    margin-right: 16px !important;
+    border-style: none;
+    float: left !important;
+    margin-top: 12px;
+}
+
 .padding-16:hover {
     color: #000 !important;
     background-color: #ccc !important;

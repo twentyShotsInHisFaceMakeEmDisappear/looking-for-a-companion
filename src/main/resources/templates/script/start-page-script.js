@@ -1,6 +1,11 @@
 document.getElementById("emailInput").addEventListener('change', validateEmail);
 document.getElementById("popularCatList").onload(categoriesParse());
 
+async function mainCategoriesRequest() {
+    let response = await fetch('http://localhost:8080/api/category');
+    return await response.json();
+}
+
 async function getInvitationButtonClick() {
     if (!validateEmail())
         return;
@@ -24,6 +29,7 @@ async function getInvitationButtonClick() {
         infoLabel.innerHTML = 'Check your email, there is something there!';
         infoLabel.style.color = "#4bd55d";
         document.getElementById("getLinkButton").disabled = true;
+        document.getElementById('emailInput').value = "";
     } else {
         infoLabel.innerHTML = jsonResponse.message;
         infoLabel.style.color = "#d54b4b";
@@ -54,7 +60,7 @@ function emailValidationRegEx(email) {
 }
 
 async function popularCategoriesRequest() {
-    let response = await fetch('http://localhost:8080/api/category/gt?c=3');
+    let response = await fetch('http://localhost:8080/api/sub-category/gt?c=3');
     return await response.json();
 }
 
@@ -66,5 +72,31 @@ function categoriesParse() {
             '<span class="large">' + (value.title) + '</span><br><span>' + (value.shortDescription) + '</span>' +
             '</li>'));
 
+    });
+
+    mainCategoriesRequest().then(function (result) {
+        result.forEach(value =>  document.getElementById("mainCatBlock").insertAdjacentHTML("afterbegin",
+            '<div class="wall-card">' +
+            '                    <img src="' + value.imageUrl + '" alt="' + value.title + '" style="width: 100%; height: 500px;">' +
+            '                    <div class="container">' +
+            '                        <h3>' +
+            '                            <b>' + value.title.toUpperCase() + '</b>' +
+            '                        </h3>' +
+            '                        <h5>' + value.shortDescription + '</h5>' +
+            '                    </div>' +
+            '                    <div class="container">' +
+            '                        <p>' + value.description +
+            '                        </p>' +
+            '                        <div class="content-container">' +
+            '                            <div class="left-side-wall-element">' +
+            '                                <p>' +
+            '                                    <button class="button-decoration">' +
+            '                                        <b>FIND COMPANION »</b>' +
+            '                                    </button>' +
+            '                                </p>' +
+            '                            </div>' +
+            '                        </div>' +
+            '                    </div>' +
+            '                </div>'));
     });
 }

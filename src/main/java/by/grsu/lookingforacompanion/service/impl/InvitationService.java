@@ -37,7 +37,8 @@ public class InvitationService implements InvitationServiceInterface {
 
         Invitation invitationEntity = new Invitation().setEmail(invitationRequestDto.getEmail())
                 .setExpirationTime(new Date(getExpirationTime().getTimeInMillis()))
-                .setGeneratedCode("");
+                .setGeneratedCode("")
+                .setIsActive(true);
 
         invitationRepository.save(invitationEntity);
 

@@ -6,8 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
+
+    @Query(value = "select * from categories",
+            nativeQuery = true)
+    Set<Category> getAll();
 
     Optional<Category> getCategoryById(Long id);
 
@@ -20,5 +25,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             "group by categ.id order by count(n) desc limit :limit",
             nativeQuery = true)
     List<Category> getCategoriesBySubCategoriesNodesCountLimitedBy(Integer limit);
+
+    List<Category> getCategoriesByTitleContainingIgnoreCase(String title);
+    List<Category> getCategoriesByDescriptionContainingIgnoreCase(String description);
+    List<Category> getCategoriesByShortDescriptionContainingIgnoreCase(String shortDescription);
 
 }
