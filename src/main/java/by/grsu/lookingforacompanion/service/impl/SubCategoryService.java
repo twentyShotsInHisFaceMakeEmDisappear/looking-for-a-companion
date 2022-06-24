@@ -1,23 +1,21 @@
 package by.grsu.lookingforacompanion.service.impl;
 
 import by.grsu.lookingforacompanion.dto.DefaultSubCategoryDto;
+import by.grsu.lookingforacompanion.dto.InformationResponseDto;
 import by.grsu.lookingforacompanion.dto.SubCategoryAttributesDto;
 import by.grsu.lookingforacompanion.dto.TruncatedSubCategoryDto;
-import by.grsu.lookingforacompanion.entity.Category;
 import by.grsu.lookingforacompanion.entity.SubCategory;
-import by.grsu.lookingforacompanion.exception.common.NonStandardVariableValueException;
+import by.grsu.lookingforacompanion.exception.category.InvalidEntityDataException;
 import by.grsu.lookingforacompanion.exception.subcategory.NoSuchDataByRequestException;
 import by.grsu.lookingforacompanion.repository.SubCategoryRepository;
 import by.grsu.lookingforacompanion.service.SubCategoryServiceInterface;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import by.grsu.lookingforacompanion.util.filter.category.DtoFilter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,6 +65,16 @@ public class SubCategoryService implements SubCategoryServiceInterface {
         return subCategoriesFiltered.stream()
                 .map((entity) -> mapper.map(entity, DefaultSubCategoryDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public DefaultSubCategoryDto createAtSubCategory(DefaultSubCategoryDto defaultSubCategoryDto) {
+        if (!DtoFilter.isSubCategoryReadyToSave(defaultSubCategoryDto))
+            throw new InvalidEntityDataException("Please input correct data.");
+
+        SubCategory currentNewSubCategory = subCategoryRepository.save(mapper.map(defaultSubCategoryDto, SubCategory.class));
+
+        return mapper.map(currentNewSubCategory, DefaultSubCategoryDto.class);
     }
 
 }

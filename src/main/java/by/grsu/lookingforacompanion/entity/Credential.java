@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
+@Accessors(chain = true)
 @Table(name = "credentials")
 public class Credential {
 

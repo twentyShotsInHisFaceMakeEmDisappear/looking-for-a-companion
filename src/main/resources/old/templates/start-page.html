@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CompanEra - It`s when you`re looking for a company.</title>
+
+    <link rel="icon" href="/img/logotype.png">
+    <link rel="stylesheet" href="/styles/default-styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+</head>
+<body>
+
+    <div class="default-view" style="max-width:1400px">
+
+        <header class="center-position">
+
+            <div class="logo-container">
+                <img class="logo" src="/img/logotype.png" alt="CompanEra Logotype" width="50px" height="50px">
+                <h1 style="font-size: 40px">
+                    <b>CompanEra</b>
+                </h1>
+            </div>
+
+            <a class="little-text">It`s when you`re looking for a company.</a>
+        </header>
+
+        <div class="content-container">
+
+            <div class="right-wall-elements">
+
+                <div class="wall-card" id="accountMenu">
+
+                    <div class="container" style="background-color: #f1f1f1">
+                        <img class="icon" src="/img/menu-ico.png" style="width: 25px; height: 25px;">
+                        <h4 style="font-size: 20px">Menu</h4>
+                    </div>
+
+                    <div class="container center-position" id="userInfoCont">
+
+
+                    </div>
+
+                    <ul class="list-decoration" id="menu">
+                        <li class="padding-16">
+                            <img class="icon" src="/img/account-ico.png" style="width: 25px; height: 25px;">
+                            <span class="large">Account</span><br><span>View or change information about you.</span>
+                        </li>
+                        <li class="padding-16">
+                            <img class="icon" src="/img/nodes-ico.png" style="width: 25px; height: 25px;">
+                            <span class="large">Nodes</span><br><span>View all nodes about all categories.</span>
+                        </li>
+                        <li class="padding-16">
+                            <img class="icon" src="/img/categories-ico.png" style="width: 25px; height: 25px;">
+                            <span class="large">Categories</span><br><span>View all categories.</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="wall-card" id="joinUs">
+                    <div class="container center-position">
+                        <img src="/img/sing-up-logo.png" height="60" width="60" style="margin-top: 15px" alt="Users logotype">
+                        <h3>
+                            <b>Join Us!</b>
+                        </h3>
+
+                        <h5>After sing up you`ll get access to all features. <h7 id="registerText" class="information-text" onclick="showSignInFields()">Already have a record?</h7></h5>
+                    </div>
+
+                    <div class="container">
+
+                        <label>
+                            <input id="emailInput" type="text" placeholder="Email" class="input-decoration" style="width: 88%">
+                            <h7 id="informationText" class="error-message">Something went wrong :/</h7>
+                        </label>
+
+                        <div class="content-container">
+                            <div class="left-side-wall-element">
+                                <p>
+                                    <button id="getLinkButton" onclick="getInvitationButtonClick()" class="button-decoration" style="margin-top: 5px">
+                                        <b>Get an invitation</b>
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="wall-card" id="login">
+                    <div class="container center-position">
+                        <img src="/img/sing-up-logo.png" height="60" width="60" style="margin-top: 15px" alt="Users logotype">
+                        <h3>
+                            <b>Sing up!</b>
+                        </h3>
+
+                        <h5>Sing up if you already have a record. <br><h7 id="informationText" class="information-text" onclick="showSignInFields()">Want to get invitation?</h7></h5>
+                    </div>
+
+                    <div class="container">
+
+                        <label>
+                            <input id="loginInput" type="text" placeholder="Email" class="input-decoration" style="width: 88%; margin-bottom: 10px">
+                        </label>
+
+                        <label>
+                            <input id="passwordInput" type="text" placeholder="Password" class="input-decoration" style="width: 88%">
+                            <h7 id="informationTextSUP" class="error-message">Something went wrong :/</h7>
+                        </label>
+
+                        <div class="content-container">
+                            <div class="left-side-wall-element">
+                                <p>
+                                    <button id="auth" onclick="authentication()" class="button-decoration" style="margin-top: 5px">
+                                        <b>Sing up</b>
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="wall-card">
+
+                    <div class="container" style="background-color: #f1f1f1">
+                        <img class="icon" src="/img/popular-cat-ico.png" style="width: 25px; height: 25px;">
+                        <h4 style="font-size: 20px">Popular categories</h4>
+                    </div>
+
+                    <ul class="list-decoration" id="popularCatList">
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="left-side-wall-element" id="mainCatBlock">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="script/__sp-script.js">
+</script>
+
+</html>

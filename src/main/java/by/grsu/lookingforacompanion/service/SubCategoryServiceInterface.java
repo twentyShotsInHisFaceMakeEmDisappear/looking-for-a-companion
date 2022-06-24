@@ -12,6 +12,8 @@ public interface SubCategoryServiceInterface {
 
     List<DefaultSubCategoryDto> getTopSubCategoriesByCategoryOwner(Long categoryOwnerId);
 
+    DefaultSubCategoryDto createAtSubCategory(DefaultSubCategoryDto defaultSubCategoryDto);
+
     List<DefaultSubCategoryDto> getSubCategoriesByAttributes(SubCategoryAttributesDto subCategoryAttributesDto);
 
 }

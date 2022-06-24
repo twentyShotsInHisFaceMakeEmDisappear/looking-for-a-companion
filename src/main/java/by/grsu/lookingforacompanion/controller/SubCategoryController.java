@@ -3,15 +3,12 @@ package by.grsu.lookingforacompanion.controller;
 import by.grsu.lookingforacompanion.dto.DefaultSubCategoryDto;
 import by.grsu.lookingforacompanion.dto.SubCategoryAttributesDto;
 import by.grsu.lookingforacompanion.dto.TruncatedSubCategoryDto;
-import by.grsu.lookingforacompanion.repository.SubCategoryRepository;
 import by.grsu.lookingforacompanion.service.SubCategoryServiceInterface;
 import by.grsu.lookingforacompanion.util.logger.ProcessTrace;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor

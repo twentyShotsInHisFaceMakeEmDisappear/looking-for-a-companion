@@ -1,7 +1,6 @@
 package by.grsu.lookingforacompanion.repository;
 
 import by.grsu.lookingforacompanion.entity.SubCategory;
-import liquibase.pro.packaged.Q;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
