@@ -4,9 +4,11 @@ import by.grsu.lookingforacompanion.dto.InformationResponseDto;
 import by.grsu.lookingforacompanion.dto.InvitationRequestDto;
 import by.grsu.lookingforacompanion.service.InvitationServiceInterface;
 import by.grsu.lookingforacompanion.util.logger.ProcessTrace;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor

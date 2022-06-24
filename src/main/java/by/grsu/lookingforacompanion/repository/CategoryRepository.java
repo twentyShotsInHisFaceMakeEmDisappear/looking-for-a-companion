@@ -16,7 +16,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     Optional<Category> getCategoryById(Long id);
 
-    List<Category> getCategoryByTitleStartsWith(String title);
+    List<Category> getCategoriesByTitleContainingIgnoreCase(String title);
 
     @Query(value = "select categ.id, categ.title, categ.short_description, " +
             "categ.image_url, categ.description from categories categ " +
@@ -26,8 +26,8 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             nativeQuery = true)
     List<Category> getCategoriesBySubCategoriesNodesCountLimitedBy(Integer limit);
 
-    List<Category> getCategoriesByTitleContainingIgnoreCase(String title);
     List<Category> getCategoriesByDescriptionContainingIgnoreCase(String description);
+
     List<Category> getCategoriesByShortDescriptionContainingIgnoreCase(String shortDescription);
 
 }

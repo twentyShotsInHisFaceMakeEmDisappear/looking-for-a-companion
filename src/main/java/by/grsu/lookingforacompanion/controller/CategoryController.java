@@ -6,6 +6,8 @@ import by.grsu.lookingforacompanion.dto.TruncatedCategoryDto;
 import by.grsu.lookingforacompanion.service.CategoryServiceInterface;
 import by.grsu.lookingforacompanion.util.logger.ProcessTrace;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

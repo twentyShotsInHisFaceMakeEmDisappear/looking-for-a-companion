@@ -5,15 +5,11 @@ import by.grsu.lookingforacompanion.dto.InvitationRequestDto;
 import by.grsu.lookingforacompanion.entity.Invitation;
 import by.grsu.lookingforacompanion.exception.invitation.AlreadyExistsByEmailException;
 import by.grsu.lookingforacompanion.exception.invitation.InvitationAlreadyDeactivatedException;
-import by.grsu.lookingforacompanion.exception.invitation.NoSuchInvitationException;
 import by.grsu.lookingforacompanion.repository.CredentialRepository;
 import by.grsu.lookingforacompanion.repository.InvitationRepository;
 import by.grsu.lookingforacompanion.service.InvitationServiceInterface;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;

@@ -1,16 +1,20 @@
 package by.grsu.lookingforacompanion.service.impl;
 
-import by.grsu.lookingforacompanion.dto.*;
+import by.grsu.lookingforacompanion.dto.CategoryAttributesDto;
+import by.grsu.lookingforacompanion.dto.DefaultCategoryDto;
+import by.grsu.lookingforacompanion.dto.InformationResponseDto;
+import by.grsu.lookingforacompanion.dto.TruncatedCategoryDto;
 import by.grsu.lookingforacompanion.entity.Category;
-import by.grsu.lookingforacompanion.entity.SubCategory;
+import by.grsu.lookingforacompanion.exception.category.InvalidEntityDataException;
+import by.grsu.lookingforacompanion.exception.category.NoSuchCategoryException;
 import by.grsu.lookingforacompanion.exception.subcategory.NoSuchDataByRequestException;
 import by.grsu.lookingforacompanion.repository.CategoryRepository;
 import by.grsu.lookingforacompanion.service.CategoryServiceInterface;
+import by.grsu.lookingforacompanion.util.filter.category.DtoFilter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.security.PublicKey;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -53,7 +57,29 @@ public class CategoryService implements CategoryServiceInterface {
         return categoriesFiltered.stream()
                 .map((entity) -> mapper.map(entity, DefaultCategoryDto.class))
                 .collect(Collectors.toList());
+    }
 
+    @Override
+    public InformationResponseDto editAnCategoryInformation(Long categoryId, DefaultCategoryDto defaultCategoryDto) {
+        if (!categoryRepository.existsById(categoryId))
+            throw new NoSuchCategoryException("Wrong entity id.");
+
+        defaultCategoryDto.setId(categoryId);
+
+        categoryRepository.save(mapper.map(defaultCategoryDto, Category.class));
+
+        return new InformationResponseDto().setMessage("Category \""
+                + defaultCategoryDto.getTitle() + "\" successfully updated!");
+    }
+
+    @Override
+    public DefaultCategoryDto createAnCategory(DefaultCategoryDto defaultCategoryDto) {
+        if (!DtoFilter.isCategoryDtoReadyToSave(defaultCategoryDto))
+            throw new InvalidEntityDataException("Enter the correct data at the fields.");
+
+        Category currentNewCategory = categoryRepository.save(mapper.map(defaultCategoryDto, Category.class));
+
+        return mapper.map(currentNewCategory, DefaultCategoryDto.class);
     }
 
 }
