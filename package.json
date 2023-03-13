@@ -1,0 +1,22 @@
+{
+  "name": "looking-for-a-companion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maksimsamsonowich/looking-for-a-companion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maksimsamsonowich/looking-for-a-companion/issues"
+  },
+  "homepage": "https://github.com/maksimsamsonowich/looking-for-a-companion#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
