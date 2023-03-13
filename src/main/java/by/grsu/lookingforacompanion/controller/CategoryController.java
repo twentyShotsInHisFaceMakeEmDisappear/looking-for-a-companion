@@ -1,5 +1,6 @@
 package by.grsu.lookingforacompanion.controller;
 
+import by.grsu.lookingforacompanion.controller.documentation.CategoryControllerDocumentation;
 import by.grsu.lookingforacompanion.dto.CategoryAttributesDto;
 import by.grsu.lookingforacompanion.dto.DefaultCategoryDto;
 import by.grsu.lookingforacompanion.dto.TruncatedCategoryDto;
@@ -18,17 +19,19 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/category")
-public class CategoryController {
+public class CategoryController implements CategoryControllerDocumentation {
 
     private final CategoryServiceInterface categoryService;
 
+    @Override
+    @GetMapping
     @ProcessTrace
-    @GetMapping()
     public Set<TruncatedCategoryDto> getAllCategories() {
 
         return categoryService.getAllCategories();
     }
 
+    @Override
     @ProcessTrace
     @GetMapping("/bo")
     public List<DefaultCategoryDto> getCategoriesByAttributes(CategoryAttributesDto categoryAttributesDto) {
